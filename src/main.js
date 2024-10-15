@@ -1,8 +1,8 @@
-import './main.scss';
+import './styles/main.scss';
+import { Header } from './components/Header';
+import { MainPage } from './components/MainPage';
+import { Footer } from './components/Footer';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <h1>Pirática Nuntium</h1>
-    <img src='./public/assets/PiraticaNuntiumWOBG.png'/>
-  </div>
-`;
+Header();
+MainPage();
+Footer();

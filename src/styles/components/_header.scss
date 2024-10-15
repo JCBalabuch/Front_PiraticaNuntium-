@@ -1,0 +1,39 @@
+header {
+    height: 15svh;
+    width: 100svw;
+    @extend %display;
+    
+    div {
+        width: 150px;
+        height: 150px;
+        @extend %display;
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        img:hover {
+            animation: girar 5s infinite linear;
+        }
+    }
+
+    h1 {
+        font-family: $pn-font-pirata;
+        position: absolute;
+        z-index: 2;
+        margin-top: 5%;
+        font-size: 3rem;
+    }
+}
+
+  
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

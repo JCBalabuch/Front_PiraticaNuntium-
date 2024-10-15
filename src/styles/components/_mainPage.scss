@@ -1,0 +1,6 @@
+.main-section {
+    width: 100svw;
+    height: 75svh;
+    @extend %display;
+    border: 2px solid red;
+}
