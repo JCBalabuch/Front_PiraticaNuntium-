@@ -15,12 +15,13 @@ export const MainPage = () => {
   Button('Comments', '', buttonsDiv);
 
   const mainDiv = document.createElement('div');
+  mainDiv.id = 'mainDiv';
   mainDiv.className = 'mainDiv';
 
-  const p = document.createElement('p');
-  p.textContent = 'I want to know if this work';
+  // const p = document.createElement('p');
+  // p.textContent = 'I want to know if this work';
 
-  mainDiv.appendChild(p);
+  // mainDiv.appendChild(p);
 
   mainSection.append(buttonsDiv, mainDiv);
   document.querySelector('#app').appendChild(mainSection);

@@ -1,14 +1,16 @@
-export const news = [];
+// export const news = [];
 
 const mainURL = import.meta.env.VITE_URL_FETCH;
 
-export const fetchNews = (search) => {
+export const fetchNews = async (search) => {
   const searchURL = `${mainURL}${search}`;
 
-  fetch(searchURL).then((response) =>
-    response.json().then((data) => {
-      news = data;
-      return news;
-    })
-  );
+  try {
+    const response = await fetch(searchURL);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching news', error);
+    throw error;
+  }
 };
