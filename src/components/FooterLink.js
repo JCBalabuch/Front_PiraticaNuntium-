@@ -1,4 +1,4 @@
-export const linkTemplate = (href, src, alt) => {
+export const footerLinkTemplate = (href, src, alt) => {
   const liLink = document.createElement('li');
   const anchorLink = document.createElement('a');
   const imgLink = document.createElement('img');

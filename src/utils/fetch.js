@@ -1,6 +1,14 @@
 export const news = [];
 
-export const fetchNews = () => {
-  const dbURL =
-    'mongodb+srv://balabuchj:evVBUl7fqsWh8eeJ@cluster0.nydtu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const mainURL = import.meta.env.VITE_URL_FETCH;
+
+export const fetchNews = (search) => {
+  const searchURL = `${mainURL}${search}`;
+
+  fetch(searchURL).then((response) =>
+    response.json().then((data) => {
+      news = data;
+      return news;
+    })
+  );
 };

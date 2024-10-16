@@ -1,5 +1,5 @@
 import { footerLinks } from '../data/FooterLinks';
-import { linkTemplate } from './Link';
+import { footerLinkTemplate } from './FooterLink';
 
 export const Footer = () => {
   const footerElement = document.createElement('footer');
@@ -11,7 +11,7 @@ export const Footer = () => {
   const rrssUl = document.createElement('ul');
 
   footerLinks.forEach((link) => {
-    const rrssLi = linkTemplate(link.href, link.src, link.alt);
+    const rrssLi = footerLinkTemplate(link.href, link.src, link.alt);
     rrssUl.appendChild(rrssLi);
   });
 

@@ -1,9 +1,18 @@
+import { Button } from './Button';
+
 export const MainPage = () => {
   const mainSection = document.createElement('section');
   mainSection.className = 'main-section';
 
   const buttonsDiv = document.createElement('div');
   buttonsDiv.className = 'buttonsDiv';
+
+  Button('Title', '', buttonsDiv);
+  Button('Site', '', buttonsDiv);
+  Button('Score', '', buttonsDiv);
+  Button('User', '', buttonsDiv);
+  Button('Time', '', buttonsDiv);
+  Button('Comments', '', buttonsDiv);
 
   const mainDiv = document.createElement('div');
   mainDiv.className = 'mainDiv';
