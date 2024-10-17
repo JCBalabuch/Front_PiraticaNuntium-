@@ -1,19 +1,17 @@
 .news-div {
   width: 100%;
   min-height: 50px;
-  @include flex(row, flex-start, center, $pn-padding-xs);
+  @include flex(row, space-between, center, $pn-padding-xs);
   flex-wrap: wrap;
-  padding: $pn-padding-m, 0, $pn-padding-m, 0;
   background-color: $pn-bg-color;
   border-top: 1px solid $pn-lines-color;
   border-bottom: 1px solid $pn-lines-color;
   border-radius: 5px;
-  gap: $pn-gap-m;
+  padding: $pn-padding-s $pn-padding-l;
 
   .title-div,
   .misc-div {
     @include flex(row, center, flex-start, $pn-padding-xs);
-    margin-left: $pn-margin-l;
     text-align: center;
   }
 
@@ -23,11 +21,19 @@
 
   a:hover {
     color: $pn-tertiary-color;
+    transform: scaleX(1.1);
+    transform-origin: left;
   }
 
   a,
   p {
     font-size: $font-size-small;
+  }
+
+  .news-title {
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .news-title,

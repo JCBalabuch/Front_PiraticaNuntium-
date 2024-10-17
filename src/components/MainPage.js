@@ -13,6 +13,7 @@ export const MainPage = () => {
   Button('User', '', buttonsDiv);
   Button('Time', '', buttonsDiv);
   Button('Comments', '', buttonsDiv);
+  Button('Update News', '', buttonsDiv);
 
   const mainDiv = document.createElement('div');
   mainDiv.id = 'mainDiv';
