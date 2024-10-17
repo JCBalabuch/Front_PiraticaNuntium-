@@ -1,11 +1,11 @@
  /* FONTS */
  $pn-font-pirata: "Pirata One", system-ui;
 
-
  /* COLOR */
  $pn-main-color: #242424;
- $pn-secondary-color: #DBFF5E;
- $pn-tertiary-color: #f0f0f0;
+ $pn-secondary-color: #f0f0f0;
+ $pn-tertiary-color: #DBFF5E;
+ $pn-transp-color: #dcff5c80;
 
  /* GAP */
  $pn-gap-ss: 5px;
@@ -20,3 +20,8 @@
  $pn-padding-m: 15px;
  $pn-padding-l: 20px;
  $pn-padding-xl: 30px;
+
+ /* TEXT */
+ $font-size-base: 16px;
+ $font-size-small: 12px;
+ $spacing: 20px;

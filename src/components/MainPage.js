@@ -5,7 +5,7 @@ export const MainPage = () => {
   mainSection.className = 'main-section';
 
   const buttonsDiv = document.createElement('div');
-  buttonsDiv.className = 'buttonsDiv';
+  buttonsDiv.className = 'buttons-div';
 
   Button('Title', '', buttonsDiv);
   Button('Site', '', buttonsDiv);
@@ -16,13 +16,12 @@ export const MainPage = () => {
 
   const mainDiv = document.createElement('div');
   mainDiv.id = 'mainDiv';
-  mainDiv.className = 'mainDiv';
+  mainDiv.className = 'main-div';
 
-  // const p = document.createElement('p');
-  // p.textContent = 'I want to know if this work';
+  const paginationDiv = document.createElement('div');
+  paginationDiv.id = 'paginationDiv';
+  paginationDiv.className = 'pagination-div';
 
-  // mainDiv.appendChild(p);
-
-  mainSection.append(buttonsDiv, mainDiv);
+  mainSection.append(buttonsDiv, mainDiv, paginationDiv);
   document.querySelector('#app').appendChild(mainSection);
 };

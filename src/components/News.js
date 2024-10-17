@@ -1,27 +1,50 @@
 import { fetchNews } from '../utils/fetch';
 import { calculateTimeDifference } from '../utils/timeDifference';
 
-export const getNews = async (search) => {
+const NEWS_BY_PAGE = 10;
+
+export const getNews = async (search, currentPage = 1) => {
   const mainDiv = document.getElementById('mainDiv');
   mainDiv.innerHTML = '';
 
   const news = await fetchNews(search);
 
-  for (let i = 0; i < 30; i++) {
-    const newsItem = news[i];
+  const totalPages = Math.ceil(news.length / NEWS_BY_PAGE);
+
+  currentPage = Math.max(1, Math.min(currentPage, totalPages));
+
+  const displayedNews = news.slice(
+    (currentPage - 1) * NEWS_BY_PAGE,
+    currentPage * NEWS_BY_PAGE
+  );
+
+  for (let i = 0; i < displayedNews.length; i++) {
+    const newsItem = displayedNews[i];
+
+    const numberNews = document.createElement('p');
+    numberNews.textContent = `${(currentPage - 1) * NEWS_BY_PAGE + i + 1}.-`;
 
     const newsDiv = document.createElement('div');
     newsDiv.classList = 'news-div';
 
     const newsTitle = document.createElement('a');
+    newsTitle.className = 'news-title';
     newsTitle.textContent = newsItem.title;
     newsTitle.href = newsItem.link;
+    newsTitle.target = '_blank';
 
-    const userNews = document.createElement('p');
-    userNews.textContent = newsItem.user;
+    const miscDiv = document.createElement('div');
+    miscDiv.classList = 'misc-div';
 
-    const siteNews = document.createElement('p');
+    const userNews = document.createElement('a');
+    userNews.textContent = `By ${newsItem.user}`;
+    userNews.href = newsItem.userlink;
+    userNews.target = '_blank';
+
+    const siteNews = document.createElement('a');
     siteNews.textContent = newsItem.site;
+    siteNews.href = newsItem.sitelink;
+    siteNews.target = '_blank';
 
     const dateNews = document.createElement('p');
     dateNews.textContent = calculateTimeDifference(newsItem.time);
@@ -37,16 +60,30 @@ export const getNews = async (search) => {
       commentsNews.textContent = `${newsItem.comments} comments`;
     }
 
-    newsDiv.append(
-      newsTitle,
-      userNews,
-      siteNews,
-      dateNews,
-      scoreNews,
-      commentsNews
-    );
+    miscDiv.append(userNews, siteNews, dateNews, scoreNews, commentsNews);
+    newsDiv.append(numberNews, newsTitle, miscDiv);
     mainDiv.append(newsDiv);
   }
 
-  console.log(news);
+  if (totalPages > 1) {
+    const paginationDiv = document.getElementById('paginationDiv');
+    paginationDiv.innerHTML = '';
+
+    let startPage = Math.max(1, currentPage - 5);
+    let endPage = Math.min(totalPages, currentPage + 5);
+
+    if (startPage <= 1) {
+      endPage = Math.min(totalPages, 10);
+    } else if (endPage >= totalPages) {
+      startPage = Math.max(1, totalPages - 9);
+    }
+
+    for (let page = startPage; page <= endPage; page++) {
+      const pageNumberButton = document.createElement('button');
+      pageNumberButton.textContent = page;
+      pageNumberButton.classList.add(page === currentPage ? 'active' : null);
+      pageNumberButton.addEventListener('click', () => getNews(search, page));
+      paginationDiv.append(pageNumberButton);
+    }
+  }
 };
