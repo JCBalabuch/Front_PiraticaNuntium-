@@ -1,27 +1,35 @@
- /* FONTS */
- $pn-font-pirata: "Pirata One", system-ui;
+/* FONTS */
+$pn-font-pirata: 'Pirata One', system-ui;
 
- /* COLOR */
- $pn-main-color: #242424;
- $pn-secondary-color: #f0f0f0;
- $pn-tertiary-color: #DBFF5E;
- $pn-transp-color: #dcff5c80;
+/* COLOR */
+$pn-main-color: #242424;
+$pn-secondary-color: #f0f0f0;
+$pn-tertiary-color: #dbff5e;
+$pn-transp-color: #dcff5c80;
+$pn-lines-color: #85858580;
+$pn-bg-color: hsla(0, 0%, 52%, 0.1);
 
- /* GAP */
- $pn-gap-ss: 5px;
- $pn-gap-s: 10px;
- $pn-gap-m: 20px;
- $pn-gap-l: 25px;
+/* MARGIN */
+$pn-margin-ss: 5px;
+$pn-margin-s: 10px;
+$pn-margin-m: 20px;
+$pn-margin-l: 25px;
 
- /* PADDING */
- $pn-padding-xxs: 3px;
- $pn-padding-xs: 5px;
- $pn-padding-s: 10px;
- $pn-padding-m: 15px;
- $pn-padding-l: 20px;
- $pn-padding-xl: 30px;
+/* GAP */
+$pn-gap-ss: 5px;
+$pn-gap-s: 10px;
+$pn-gap-m: 20px;
+$pn-gap-l: 25px;
 
- /* TEXT */
- $font-size-base: 16px;
- $font-size-small: 12px;
- $spacing: 20px;
+/* PADDING */
+$pn-padding-xxs: 3px;
+$pn-padding-xs: 5px;
+$pn-padding-s: 10px;
+$pn-padding-m: 15px;
+$pn-padding-l: 20px;
+$pn-padding-xl: 30px;
+
+/* TEXT */
+$font-size-base: 16px;
+$font-size-small: 12px;
+$spacing: 20px;

@@ -1,15 +1,24 @@
 .news-div {
   width: 100%;
-  height: auto;
+  min-height: 50px;
   @include flex(row, flex-start, center, $pn-padding-xs);
   flex-wrap: wrap;
-  margin-left: 10px;
-  //   border: 1px solid whitesmoke;
+  padding: $pn-padding-m, 0, $pn-padding-m, 0;
+  background-color: $pn-bg-color;
+  border-top: 1px solid $pn-lines-color;
+  border-bottom: 1px solid $pn-lines-color;
+  border-radius: 5px;
+  gap: $pn-gap-m;
 
+  .title-div,
   .misc-div {
     @include flex(row, center, flex-start, $pn-padding-xs);
-    gap: $pn-gap-l;
-    // border: 1px solid orange;
+    margin-left: $pn-margin-l;
+    text-align: center;
+  }
+
+  .misc-div {
+    gap: $pn-gap-m;
   }
 
   a:hover {
@@ -21,8 +30,31 @@
     font-size: $font-size-small;
   }
 
-  .news-title {
+  .news-title,
+  .number-news {
     font-size: $font-size-base;
-    // border: 1px solid brown;
+  }
+}
+
+.number-news {
+  margin-left: $pn-margin-s;
+}
+
+.pagination-div {
+  button {
+    width: 30px;
+    padding: $pn-padding-xs;
+    text-align: center;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    border: 1px solid $pn-tertiary-color;
+    color: $pn-tertiary-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $pn-tertiary-color;
+      color: $pn-main-color;
+    }
   }
 }

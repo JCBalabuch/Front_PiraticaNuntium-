@@ -21,11 +21,15 @@ export const getNews = async (search, currentPage = 1) => {
   for (let i = 0; i < displayedNews.length; i++) {
     const newsItem = displayedNews[i];
 
-    const numberNews = document.createElement('p');
-    numberNews.textContent = `${(currentPage - 1) * NEWS_BY_PAGE + i + 1}.-`;
-
     const newsDiv = document.createElement('div');
     newsDiv.classList = 'news-div';
+
+    const titleDiv = document.createElement('div');
+    titleDiv.classList = 'title-div';
+
+    const numberNews = document.createElement('p');
+    numberNews.className = 'number-news';
+    numberNews.textContent = `${(currentPage - 1) * NEWS_BY_PAGE + i + 1}.-`;
 
     const newsTitle = document.createElement('a');
     newsTitle.className = 'news-title';
@@ -37,7 +41,7 @@ export const getNews = async (search, currentPage = 1) => {
     miscDiv.classList = 'misc-div';
 
     const userNews = document.createElement('a');
-    userNews.textContent = `By ${newsItem.user}`;
+    userNews.textContent = `by ${newsItem.user}`;
     userNews.href = newsItem.userlink;
     userNews.target = '_blank';
 
@@ -61,7 +65,8 @@ export const getNews = async (search, currentPage = 1) => {
     }
 
     miscDiv.append(userNews, siteNews, dateNews, scoreNews, commentsNews);
-    newsDiv.append(numberNews, newsTitle, miscDiv);
+    titleDiv.append(numberNews, newsTitle);
+    newsDiv.append(titleDiv, miscDiv);
     mainDiv.append(newsDiv);
   }
 
