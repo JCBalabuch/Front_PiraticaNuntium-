@@ -1,7 +1,7 @@
 import { fetchNews } from '../utils/fetch';
 import { calculateTimeDifference } from '../utils/timeDifference';
 
-const NEWS_BY_PAGE = 10;
+const NEWS_PER_PAGE = 10;
 
 export const getNews = async (search, currentPage = 1) => {
   const mainDiv = document.getElementById('mainDiv');
@@ -9,13 +9,13 @@ export const getNews = async (search, currentPage = 1) => {
 
   const news = await fetchNews(search);
 
-  const totalPages = Math.ceil(news.length / NEWS_BY_PAGE);
+  const totalPages = Math.ceil(news.length / NEWS_PER_PAGE);
 
   currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
   const displayedNews = news.slice(
-    (currentPage - 1) * NEWS_BY_PAGE,
-    currentPage * NEWS_BY_PAGE
+    (currentPage - 1) * NEWS_PER_PAGE,
+    currentPage * NEWS_PER_PAGE
   );
 
   for (let i = 0; i < displayedNews.length; i++) {
@@ -29,7 +29,7 @@ export const getNews = async (search, currentPage = 1) => {
 
     const numberNews = document.createElement('p');
     numberNews.className = 'number-news';
-    numberNews.textContent = `${(currentPage - 1) * NEWS_BY_PAGE + i + 1}.-`;
+    numberNews.textContent = `${(currentPage - 1) * NEWS_PER_PAGE + i + 1}.-`;
 
     const newsTitle = document.createElement('a');
     newsTitle.className = 'news-title';

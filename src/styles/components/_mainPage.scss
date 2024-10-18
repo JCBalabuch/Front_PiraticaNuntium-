@@ -16,8 +16,8 @@
 .main-div {
   width: 95%;
   height: 65svh;
-  flex-wrap: wrap;
-  @include flex(row, flex-start, center, $pn-padding-xs);
+  @include flex(row, flex-start, flex-start, $pn-gap-s);
+  align-content: flex-start;
 }
 
 .pagination-div {

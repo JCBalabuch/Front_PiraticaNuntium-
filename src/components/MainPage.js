@@ -1,4 +1,12 @@
+// Imports
+import {
+  clearSearch,
+  searchByField,
+  sortNews,
+  updateNews,
+} from '../utils/search';
 import { Button } from './Button';
+import { Input } from './Input';
 
 export const MainPage = () => {
   const mainSection = document.createElement('section');
@@ -7,13 +15,16 @@ export const MainPage = () => {
   const buttonsDiv = document.createElement('div');
   buttonsDiv.className = 'buttons-div';
 
-  Button('Title', '', buttonsDiv);
-  Button('Site', '', buttonsDiv);
-  Button('Score', '', buttonsDiv);
-  Button('User', '', buttonsDiv);
-  Button('Time', '', buttonsDiv);
-  Button('Comments', '', buttonsDiv);
-  Button('Update News', '', buttonsDiv);
+  Input(buttonsDiv);
+
+  Button('search by Title', 'searchByTitle', searchByField, buttonsDiv);
+  Button('search by Site', 'searchBySite', searchByField, buttonsDiv);
+  Button('search by User', 'searchByUser', searchByField, buttonsDiv);
+  Button('sort by Score', 'sortByScore', sortNews, buttonsDiv);
+  Button('sort by Time', 'sortByTime', sortNews, buttonsDiv);
+  Button('sort by Comments', 'sortByComments', sortNews, buttonsDiv);
+  Button('Clear search', 'clearSearch', clearSearch, buttonsDiv);
+  Button('Update News', 'updateNews', updateNews, buttonsDiv);
 
   const mainDiv = document.createElement('div');
   mainDiv.id = 'mainDiv';

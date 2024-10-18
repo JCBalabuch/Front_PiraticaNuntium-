@@ -1,15 +1,16 @@
 .pn-button {
-    width: 80px;
- background-color: $pn-secondary-color;
- color: $pn-main-color;
- border-radius: 10px;
- padding: $pn-padding-xs $pn-padding-s;
- font-size: 0.7rem;
- cursor: pointer;
+  width: 80px;
+  background-color: $pn-secondary-color;
+  color: $pn-main-color;
+  border-radius: 10px;
+  padding: $pn-padding-xs $pn-padding-s;
+  font-size: 0.7rem;
+  cursor: pointer;
 }
 
-.buttons-news:active {
-    transform: scale(0.95);
-    box-shadow: 1px 3px 3px $pn-tertiary-color;
-  }
-  
+.pn-button:active {
+  transform: scale(0.95);
+  background-color: $pn-tertiary-color;
+  color: $pn-main-color;
+  box-shadow: 1px 3px 3px $pn-lines-color;
+}
