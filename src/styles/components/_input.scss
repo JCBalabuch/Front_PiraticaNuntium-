@@ -1,7 +1,15 @@
 #searchInput {
-  background-color: $pn-secondary-color;
-  color: $pn-main-color;
+  width: 200px;
+  height: 36px;
+  background-color: transparent;
+  border: 1px solid $pn-lines-color;
+  color: $pn-tertiary-color;
   border-radius: 10px;
   padding: $pn-padding-xs $pn-padding-s;
   font-size: 0.7rem;
+
+  &:focus {
+    background-color: transparent;
+    color: $pn-tertiary-color;
+  }
 }
