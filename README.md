@@ -54,9 +54,20 @@ npm install
 npm run dev
 ```
 
+## Environment variables
+
+Add a .env file
+
+```js
+VITE_URL_FETCH = // Your server's URL
+```
+
 ## Backend
 
-https://github.com/JCBalabuch/Back_PiraticaNuntium
+[Github](https://github.com/JCBalabuch/Back_PiraticaNuntium)
+[Deployment](https://back-piratica-nuntium.vercel.app/)
+
+## Fontend deployment
 
 ## Contributing
 
