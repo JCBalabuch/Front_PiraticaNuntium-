@@ -7,7 +7,7 @@ The front end of the project is built with Javascript and SCSS, following a comp
 
 ## Screenshots
 
-![Main page screenshoot](./assets/MainPageScreenshoot.png)
+![Main page screenshoot](public/assets/MainPageScreenshoot.png)
 
 ## Features
 
