@@ -2,12 +2,12 @@
 
 ## Description
 
-Piratica Nuntium is a web application that scrapes news from the website (https://news.ycombinator.com/news).
+Piratica Nuntium is a web application that scrapes news from the website https://news.ycombinator.com/news.
 The front end of the project is built with Javascript and SCSS, following a component-based architecture.
 
 ## Screenshots
 
-![Main page screenshoot](/assets/MainPageScreenshoot.png)
+![Main page screenshoot](./assets/MainPageScreenshoot.png)
 
 ## Features
 
@@ -56,7 +56,7 @@ npm run dev
 
 ## Backend
 
-(https://github.com/JCBalabuch/Back_PiraticaNuntium)
+https://github.com/JCBalabuch/Back_PiraticaNuntium
 
 ## Contributing
 
