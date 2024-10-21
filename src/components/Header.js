@@ -1,3 +1,4 @@
+// Header rendering
 export const Header = () => {
   const headerElement = document.createElement('header');
   headerElement.id = 'header';

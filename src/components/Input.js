@@ -1,3 +1,4 @@
+// Input element
 export const Input = (parent) => {
   const input = document.createElement('input');
   input.type = 'text';

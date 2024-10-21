@@ -1,8 +1,6 @@
 // Imports
-
 import { createLoaders } from '../components/Loader';
 import { getNews } from '../components/News';
-import { fetchNews } from './fetch';
 
 // Search by Title or Site or User
 

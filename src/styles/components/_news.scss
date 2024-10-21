@@ -1,5 +1,5 @@
 .news-div {
-  width: 100%;
+  width: 98%;
   min-height: 50px;
   @include flex(row, space-between, center, $pn-padding-xs);
   flex-wrap: wrap;
@@ -11,7 +11,7 @@
 
   .title-div,
   .misc-div {
-    @include flex(row, center, flex-start, $pn-padding-xs);
+    @include flex(row, flex-start, center, $pn-padding-xs);
     text-align: center;
   }
 

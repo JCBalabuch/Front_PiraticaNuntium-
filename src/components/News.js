@@ -1,14 +1,20 @@
+// Imports
 import { fetchNews } from '../utils/fetch';
 import { calculateTimeDifference } from '../utils/timeDifference';
 
+// News per page
 const NEWS_PER_PAGE = 10;
 
+// Function to fetch and render news
 export const getNews = async (search, currentPage = 1) => {
+  // Get the news div
   const mainDiv = document.getElementById('mainDiv');
   mainDiv.innerHTML = '';
 
+  // Fetch news
   const news = await fetchNews(search);
 
+  // Calculate number of pages
   const totalPages = Math.ceil(news.length / NEWS_PER_PAGE);
 
   currentPage = Math.max(1, Math.min(currentPage, totalPages));
@@ -18,6 +24,7 @@ export const getNews = async (search, currentPage = 1) => {
     currentPage * NEWS_PER_PAGE
   );
 
+  // Render the news
   for (let i = 0; i < displayedNews.length; i++) {
     const newsItem = displayedNews[i];
 
@@ -70,6 +77,7 @@ export const getNews = async (search, currentPage = 1) => {
     mainDiv.append(newsDiv);
   }
 
+  // News pagination
   if (totalPages > 1) {
     const paginationDiv = document.getElementById('paginationDiv');
     paginationDiv.innerHTML = '';

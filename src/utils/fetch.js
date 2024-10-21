@@ -1,7 +1,7 @@
-// export const news = [];
-
+// URL to access server
 const mainURL = import.meta.env.VITE_URL_FETCH;
 
+// Fetch function
 export const fetchNews = async (search) => {
   const searchURL = `${mainURL}${search}`;
 

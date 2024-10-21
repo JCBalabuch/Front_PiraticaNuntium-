@@ -1,3 +1,4 @@
+// Footer's links
 export const footerLinkTemplate = (href, src, alt) => {
   const liLink = document.createElement('li');
   const anchorLink = document.createElement('a');

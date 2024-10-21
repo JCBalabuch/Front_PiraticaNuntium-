@@ -1,3 +1,5 @@
+// Function to calculate the time a news item was published
+
 export const calculateTimeDifference = (date) => {
   const newsDate = new Date(date);
   const currentDate = new Date();

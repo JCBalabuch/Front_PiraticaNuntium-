@@ -8,6 +8,7 @@ import {
 import { Button } from './Button';
 import { Input } from './Input';
 
+// Drawing from the main page section
 export const MainPage = () => {
   const mainSection = document.createElement('section');
   mainSection.className = 'main-section';
@@ -16,7 +17,6 @@ export const MainPage = () => {
   buttonsDiv.className = 'buttons-div';
 
   Input(buttonsDiv);
-
   Button('search by Title', 'searchByTitle', searchByField, buttonsDiv);
   Button('search by Site', 'searchBySite', searchByField, buttonsDiv);
   Button('search by User', 'searchByUser', searchByField, buttonsDiv);

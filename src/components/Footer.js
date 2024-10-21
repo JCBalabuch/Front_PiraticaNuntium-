@@ -1,6 +1,8 @@
+// Imports
 import { footerLinks } from '../data/FooterLinks';
 import { footerLinkTemplate } from './FooterLink';
 
+// Footer rendering
 export const Footer = () => {
   const footerElement = document.createElement('footer');
   footerElement.id = 'footer';

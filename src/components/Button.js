@@ -1,3 +1,4 @@
+// Button element
 export const Button = (title, id, action, parent) => {
   const button = document.createElement('button');
   button.textContent = title;
