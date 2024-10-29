@@ -11,10 +11,7 @@ export const fetchNews = async (search) => {
     const response = await fetch(searchURL);
 
     if (!response.ok) {
-      throw new Error(
-        // `HTTP error! Status: ${response.status} - ${response.statusText}`
-        response.statusText
-      );
+      throw new Error(response.statusText);
     }
 
     const data = await response.json();
