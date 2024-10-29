@@ -17,6 +17,7 @@ export const searchByField = (event) => {
 
   if (searchTerm) {
     getNews(param);
+    searchInput.value = '';
   } else {
     alert('Please enter a term to search');
   }
@@ -56,7 +57,7 @@ export const updateNews = async () => {
     });
 
     if (!response.ok) {
-      throw new Error('Failed to run scrape');
+      throw new Error('Failed to run scraper');
     }
 
     const result = await response.json();

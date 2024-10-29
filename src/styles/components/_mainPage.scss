@@ -1,8 +1,7 @@
 .main-section {
   width: 100svw;
-  height: auto;
-  @include flex(column, center, center, $pn-gap-s);
-  flex-direction: column;
+  min-height: 75svh;
+  @include flex(column, flex-start, center, $pn-gap-s);
 }
 
 .buttons-div {
@@ -27,6 +26,5 @@
   margin-top: $pn-margin-ss;
   @extend %display;
   flex-wrap: wrap;
-  border: 2px solid yelow;
   gap: $pn-gap-m;
 }
