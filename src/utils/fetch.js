@@ -1,11 +1,9 @@
 // URL to access server
-const mainURL = import.meta.env.VITE_URL_FETCH;
+const mainURL = 'https://back-piratica-nuntium.vercel.app/piratica_nuntium';
 
 // Fetch function
 export const fetchNews = async (search) => {
   const searchURL = `${mainURL}${search}`;
-
-  console.log(searchURL);
 
   try {
     const response = await fetch(searchURL);
@@ -26,7 +24,5 @@ export const fetchNews = async (search) => {
       console.error('Error fetching news', error);
       throw new Error('An error occurred while fetching news');
     }
-    console.error('Error fetching news', error);
-    throw error;
   }
 };
