@@ -1,9 +1,9 @@
 // Imports
 import { fetchNews } from '../utils/fetch';
-import { calculateTimeDifference } from '../utils/timeDifference';
-
-// News per page
-const NEWS_PER_PAGE = 10;
+import { displayErrorMessage } from './displayErrorMsg';
+import { createLoaders } from './Loader';
+import { NEWS_PER_PAGE, renderNews } from './renderNews';
+import { renderPagination } from './renderPagination';
 
 // Function to fetch and render news
 export const getNews = async (search, currentPage = 1) => {
@@ -11,92 +11,144 @@ export const getNews = async (search, currentPage = 1) => {
   const mainDiv = document.getElementById('mainDiv');
   mainDiv.innerHTML = '';
 
-  // Fetch news
-  const news = await fetchNews(search);
+  // Display the loader
+  createLoaders();
 
-  // Calculate number of pages
-  const totalPages = Math.ceil(news.length / NEWS_PER_PAGE);
+  try {
+    // Fetch news
+    const news = await fetchNews(search);
+    console.log(news);
 
-  currentPage = Math.max(1, Math.min(currentPage, totalPages));
+    // Clean mainDiv
+    mainDiv.innerHTML = '';
 
-  const displayedNews = news.slice(
-    (currentPage - 1) * NEWS_PER_PAGE,
-    currentPage * NEWS_PER_PAGE
-  );
+    // Calculate number of pages
+    const totalPages = Math.ceil(news.length / NEWS_PER_PAGE);
 
-  // Render the news
-  for (let i = 0; i < displayedNews.length; i++) {
-    const newsItem = displayedNews[i];
+    currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
-    const newsDiv = document.createElement('div');
-    newsDiv.classList = 'news-div';
+    const displayedNews = news.slice(
+      (currentPage - 1) * NEWS_PER_PAGE,
+      currentPage * NEWS_PER_PAGE
+    );
 
-    const titleDiv = document.createElement('div');
-    titleDiv.classList = 'title-div';
+    console.log('48', news);
+    console.log('49', totalPages);
+    console.log('50', displayedNews);
 
-    const numberNews = document.createElement('p');
-    numberNews.className = 'number-news';
-    numberNews.textContent = `${(currentPage - 1) * NEWS_PER_PAGE + i + 1}.-`;
+    // Render news items
+    renderNews(displayedNews, currentPage, mainDiv);
 
-    const newsTitle = document.createElement('a');
-    newsTitle.className = 'news-title';
-    newsTitle.textContent = newsItem.title;
-    newsTitle.href = newsItem.link;
-    newsTitle.target = '_blank';
+    // Render pagination
+    renderPagination(totalPages, currentPage, mainDiv);
+  } catch (error) {
+    // Clean mainDiv
+    mainDiv.innerHTML = '';
 
-    const miscDiv = document.createElement('div');
-    miscDiv.classList = 'misc-div';
-
-    const userNews = document.createElement('a');
-    userNews.textContent = `by ${newsItem.user}`;
-    userNews.href = newsItem.userlink;
-    userNews.target = '_blank';
-
-    const siteNews = document.createElement('a');
-    siteNews.textContent = newsItem.site;
-    siteNews.href = newsItem.sitelink;
-    siteNews.target = '_blank';
-
-    const dateNews = document.createElement('p');
-    dateNews.textContent = calculateTimeDifference(newsItem.time);
-
-    const scoreNews = document.createElement('p');
-    scoreNews.textContent = `${newsItem.score} points`;
-
-    const commentsNews = document.createElement('p');
-
-    if (newsItem.comments === 'discuss') {
-      commentsNews.textContent = newsItem.comments;
-    } else {
-      commentsNews.textContent = `${newsItem.comments} comments`;
-    }
-
-    miscDiv.append(userNews, siteNews, dateNews, scoreNews, commentsNews);
-    titleDiv.append(numberNews, newsTitle);
-    newsDiv.append(titleDiv, miscDiv);
-    mainDiv.append(newsDiv);
-  }
-
-  // News pagination
-  if (totalPages > 1) {
+    // Clean paginationDiv
     const paginationDiv = document.getElementById('paginationDiv');
     paginationDiv.innerHTML = '';
 
-    let startPage = Math.max(1, currentPage - 5);
-    let endPage = Math.min(totalPages, currentPage + 5);
-
-    if (startPage <= 1) {
-      endPage = Math.min(totalPages, 10);
-    } else if (endPage >= totalPages) {
-      startPage = Math.max(1, totalPages - 9);
-    }
-
-    for (let page = startPage; page <= endPage; page++) {
-      const pageNumberButton = document.createElement('button');
-      pageNumberButton.textContent = page;
-      pageNumberButton.classList.add(page === currentPage ? 'active' : null);
-      pageNumberButton.addEventListener('click', () => getNews(search, page));
-      paginationDiv.append(pageNumberButton);
-    }
+    // Error handling
+    const errorMessage = error.message || 'Error fetching news';
+    displayErrorMessage(errorMessage, mainDiv);
+    console.error('Error fetching news', error);
   }
 };
+
+//! Funciona
+// // Function to fetch and render news
+// export const getNews1 = async (search, currentPage = 1) => {
+//   // Get the news div
+//   const mainDiv = document.getElementById('mainDiv');
+//   mainDiv.innerHTML = '';
+
+//   // Fetch news
+//   const news = await fetchNews(search);
+
+//   // Calculate number of pages
+//   const totalPages = Math.ceil(news.length / NEWS_PER_PAGE);
+
+//   currentPage = Math.max(1, Math.min(currentPage, totalPages));
+
+//   const displayedNews = news.slice(
+//     (currentPage - 1) * NEWS_PER_PAGE,
+//     currentPage * NEWS_PER_PAGE
+//   );
+
+//   // Render the news
+//   for (let i = 0; i < displayedNews.length; i++) {
+//     const newsItem = displayedNews[i];
+
+//     const newsDiv = document.createElement('div');
+//     newsDiv.classList = 'news-div';
+
+//     const titleDiv = document.createElement('div');
+//     titleDiv.classList = 'title-div';
+
+//     const numberNews = document.createElement('p');
+//     numberNews.className = 'number-news';
+//     numberNews.textContent = `${(currentPage - 1) * NEWS_PER_PAGE + i + 1}.-`;
+
+//     const newsTitle = document.createElement('a');
+//     newsTitle.className = 'news-title';
+//     newsTitle.textContent = newsItem.title;
+//     newsTitle.href = newsItem.link;
+//     newsTitle.target = '_blank';
+
+//     const miscDiv = document.createElement('div');
+//     miscDiv.classList = 'misc-div';
+
+//     const userNews = document.createElement('a');
+//     userNews.textContent = `by ${newsItem.user}`;
+//     userNews.href = newsItem.userlink;
+//     userNews.target = '_blank';
+
+//     const siteNews = document.createElement('a');
+//     siteNews.textContent = newsItem.site;
+//     siteNews.href = newsItem.sitelink;
+//     siteNews.target = '_blank';
+
+//     const dateNews = document.createElement('p');
+//     dateNews.textContent = calculateTimeDifference(newsItem.time);
+
+//     const scoreNews = document.createElement('p');
+//     scoreNews.textContent = `${newsItem.score} points`;
+
+//     const commentsNews = document.createElement('p');
+
+//     if (newsItem.comments === 'discuss') {
+//       commentsNews.textContent = newsItem.comments;
+//     } else {
+//       commentsNews.textContent = `${newsItem.comments} comments`;
+//     }
+
+//     miscDiv.append(userNews, siteNews, dateNews, scoreNews, commentsNews);
+//     titleDiv.append(numberNews, newsTitle);
+//     newsDiv.append(titleDiv, miscDiv);
+//     mainDiv.append(newsDiv);
+//   }
+
+//   // News pagination
+//   if (totalPages > 1) {
+//     const paginationDiv = document.getElementById('paginationDiv');
+//     paginationDiv.innerHTML = '';
+
+//     let startPage = Math.max(1, currentPage - 5);
+//     let endPage = Math.min(totalPages, currentPage + 5);
+
+//     if (startPage <= 1) {
+//       endPage = Math.min(totalPages, 10);
+//     } else if (endPage >= totalPages) {
+//       startPage = Math.max(1, totalPages - 9);
+//     }
+
+//     for (let page = startPage; page <= endPage; page++) {
+//       const pageNumberButton = document.createElement('button');
+//       pageNumberButton.textContent = page;
+//       pageNumberButton.classList.add(page === currentPage ? 'active' : null);
+//       pageNumberButton.addEventListener('click', () => getNews(search, page));
+//       paginationDiv.append(pageNumberButton);
+//     }
+//   }
+// };

@@ -2,7 +2,7 @@
 const LOADERS_PER_PAGE = 10;
 
 // Loaders layout
-export const createLoaders = async (search, currentPage = 1) => {
+export const createLoaders = () => {
   const mainDiv = document.getElementById('mainDiv');
   mainDiv.innerHTML = '';
 
