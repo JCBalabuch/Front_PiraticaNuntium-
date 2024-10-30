@@ -1,5 +1,6 @@
 // URL to access server
 const mainURL = 'https://back-piratica-nuntium.vercel.app/piratica_nuntium';
+// const mainURL = 'http://localhost:3000/piratica_nuntium';
 
 // Fetch function
 export const fetchNews = async (search) => {

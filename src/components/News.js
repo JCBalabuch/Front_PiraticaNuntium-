@@ -11,6 +11,8 @@ export const getNews = async (search, currentPage = 1) => {
   const mainDiv = document.getElementById('mainDiv');
   mainDiv.innerHTML = '';
 
+  const paginationDiv = document.getElementById('paginationDiv');
+
   // Display the loader
   createLoaders();
 
@@ -35,7 +37,7 @@ export const getNews = async (search, currentPage = 1) => {
     renderNews(displayedNews, currentPage, mainDiv);
 
     // Render pagination
-    renderPagination(totalPages, currentPage, mainDiv);
+    renderPagination(totalPages, currentPage, paginationDiv, search);
   } catch (error) {
     // Clean mainDiv
     mainDiv.innerHTML = '';

@@ -1,8 +1,14 @@
-export const renderPagination = (totalPages, currentPage, container) => {
+import { getNews } from './News';
+
+export const renderPagination = (
+  totalPages,
+  currentPage,
+  container,
+  search
+) => {
   // News pagination
-  if (totalPages > 1) {
-    const paginationDiv = document.getElementById('paginationDiv');
-    paginationDiv.innerHTML = '';
+  if (totalPages >= 1) {
+    container.innerHTML = '';
 
     let startPage = Math.max(1, currentPage - 5);
     let endPage = Math.min(totalPages, currentPage + 5);
@@ -18,7 +24,7 @@ export const renderPagination = (totalPages, currentPage, container) => {
       pageNumberButton.textContent = page;
       pageNumberButton.classList.add(page === currentPage ? 'active' : null);
       pageNumberButton.addEventListener('click', () => getNews(search, page));
-      paginationDiv.append(pageNumberButton);
+      container.append(pageNumberButton);
     }
   }
 };

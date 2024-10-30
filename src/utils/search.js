@@ -62,7 +62,9 @@ export const updateNews = async () => {
 
     const result = await response.json();
 
-    await getNews('/get-all-news');
+    if (result.success) {
+      await getNews('/get-all-news');
+    }
   } catch (error) {
     console.error('Error scraping news', error.message, error);
   }
